@@ -1,0 +1,123 @@
+Davangere benne dosa
+5
+Butter masala dosa
+5
+30
+Open masala dosa
+6
+40
+Onion dosa
+4
+50
+Rava dosa
+6
+50
+Neer dosa
+5
+40
+1
+ITC gardenia
+5
+Avocado uramaki
+15
+200
+Ebi tempura roll
+14
+210
+Banoffee truffle
+17
+210
+Golden fried broccoli
+12
+190
+Tawa meen
+27
+270
+1
+Empire restaurant
+5
+Chicken tandoori
+18
+140
+Parota
+7
+20
+Butter chicken
+17
+120
+Butter scotch milkshake
+10
+120
+Shaadi-ki-biriyani
+25
+570
+1
+Shanti sagar
+5
+Veg palao
+12
+80
+Veg biriyani
+12
+80
+Schezwan fried rice
+14
+100
+Palak paneer
+13
+90
+Veg noodles
+12
+80
+1
+Burma burma
+5
+Burmese pepper soup
+19
+290
+Chicken ramen
+20
+370
+Pumpkin and basil soup
+20
+290
+Eggplant tofu mash
+19
+210
+Sticky rice
+12
+190
+2
+1
+2,3,4
+2
+5
+1,5
+2
+1
+2
+3
+1,4
+2
+3
+2
+2
+3
+3
+1
+1
+1
+Ragi Dosa
+7
+60
+2
+1
+6
+2
+4
+1,3,5
+jasdhkas
+jashdh
+2
+kajdskasjd
+4

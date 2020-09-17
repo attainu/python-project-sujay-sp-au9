@@ -1,0 +1,29 @@
+ONBOARD:
+input style:
+[1]
+[Restaurant name]
+function ADDITEM:
+[Number of items that the restaurant serves]
+[Name of item]
+[Preparation time for item]
+[Cost of item]
+repeated for each item
+ORDER:
+input style:
+[2]
+[Choice of restaurant represented by number in list]
+example: 1
+example: 3
+[Choice of item(s) represented by number in list, if plural separate selection by comma]
+example: 1
+example: 2,3,4
+UPDATE_MENU:
+[3]
+[Choice of restaurant represented by number in list]
+[1 to addItem/change price of existing item(function ADDITEM) or 2 to delete item(function DELETEITEM)]
+CLOSE_API:
+[4]
+waits for existing orders to dispatch and exits
+function DELETE_ITEM:
+[name of item to be deleted from selected restaurant]
+if name exists, item is deleted
