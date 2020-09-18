@@ -16,6 +16,7 @@ Sys
 Threading  
 From collections defaultdict  
 From playsound playsound
+gtts
 
 ## OOP principles in place:  
 Each order is an object of the Thread class in threading library in python
