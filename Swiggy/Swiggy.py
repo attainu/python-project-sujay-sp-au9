@@ -33,7 +33,7 @@ class Swiggy:
 
     def inputFile(self, text=""):
         if not self.fileInput:
-            return input(text)
+            return input(text).strip()
         print(text)
         self.inputIndex += 1
         time.sleep(0.5)
@@ -45,7 +45,7 @@ class Swiggy:
         name = self.inputFile("Restaurant name: ")
         check = True
         for i in self.restaurants:
-            if name == i[0]:
+            if(name == i[0]):
                 print("Restaurant name already exists. Sorry")
                 check = False
                 break
@@ -160,7 +160,7 @@ class Swiggy:
         choiceOfRestaurant = self.inputFile()
         if(choiceOfRestaurant.isdigit()):
             choiceOfRestaurant = int(choiceOfRestaurant)-1
-            if(self.restaurants[choiceOfRestaurant][3] == False or choiceOfRestaurant > len(self.restaurants)):
+            if(choiceOfRestaurant > len(self.restaurants)-1 or choiceOfRestaurant < 0 or self.restaurants[choiceOfRestaurant][3] == False):
                 print("Wrong entry. Try again")
             else:
                 temp = self.restaurants[choiceOfRestaurant][0]
@@ -182,7 +182,7 @@ class Swiggy:
                         item = choice[i].strip()
                         if(item.isdigit()):
                             item = int(item)-1
-                            if(item >= len(temp)):
+                            if(item >= len(self.items[temp])):
                                 print("Wrong entry. Skipping item")
                             else:
                                 self.restaurants[choiceOfRestaurant][2] -= 1
@@ -193,7 +193,7 @@ class Swiggy:
                             print("Wrong entry. Skipping item")
                     if(len(totalPrepareTime) != 0):
                         thread = threading.Thread(target=self.prepareDispatch, args=[totalPrepareTime, [
-                            orderNumber, choiceOfRestaurant-1], totalCost])
+                            orderNumber, choiceOfRestaurant], totalCost])
                         self.ordersTaken[orderNumber] = thread
                         thread.start()
 
@@ -205,6 +205,7 @@ class Swiggy:
             f'Order {orderNumber[0]} will be dispatched in approximately {sum(totalPrepareTime)} minutes')
         for prepareTime in totalPrepareTime:
             time.sleep(prepareTime)
+            self.restaurants[orderNumber[1]][3] = True
             self.restaurants[orderNumber[1]][2] += 1
         f = open(
             f'F:\\Github\\python-project-sujay-sp-au9\\Order_log\\Order{orderNumber[0]}.txt', "w+")
