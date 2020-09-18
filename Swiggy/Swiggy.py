@@ -3,6 +3,7 @@ import sys
 from collections import defaultdict
 import threading
 from playsound import playsound
+import gtts
 
 
 class Swiggy:
@@ -205,10 +206,15 @@ class Swiggy:
         for prepareTime in totalPrepareTime:
             time.sleep(prepareTime)
             self.restaurants[orderNumber[1]][2] += 1
-        f = open(f'Order{orderNumber[0]}.txt', "w+")
+        f = open(
+            f'F:\\Github\\python-project-sujay-sp-au9\\Order_log\\Order{orderNumber[0]}.txt', "w+")
         f.write(f'Order {orderNumber[0]} dispatched. Please pay {totalCost}')
         f.close()
-        playsound("F:\Github\python-project-sujay-sp-au9\juntos.mp3")
+        tts = gtts.gTTS(f'Order {orderNumber[0]}')
+        tts.save(
+            f'F:\\Github\\python-project-sujay-sp-au9\\Order_log\\{orderNumber[0]}.mp3')
+        playsound(
+            f"F:\\Github\\python-project-sujay-sp-au9\\Order_log\\{orderNumber[0]}.mp3")
         del self.ordersTaken[orderNumber[0]]
 
 
