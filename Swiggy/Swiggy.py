@@ -2,13 +2,26 @@ import time
 import sys
 from collections import defaultdict
 import threading
+from playsound import playsound
 
 
 class Swiggy:
     def __init__(self, input):
         self.PROCESSING_POWER = 3
-        self.restaurants = []
-        self.items = defaultdict(list)
+        self.restaurants = [['Davangere benne dosa', 5000, 3, True], ['ITC gardenia', 5000, 3, True], [
+            'Empire restaurant', 5000, 3, True], ['Shanti sagar', 5000, 3, True], ['Burma burma', 5000, 3, True]]
+        self.items = defaultdict(list, {
+            'Davangere benne dosa': [
+                ['Butter masala dosa', 5, 30], ['Open masala dosa', 6, 40], ['Onion dosa', 4, 50], ['Rava dosa', 6, 50], ['Neer dosa', 5, 40]],
+            'ITC gardenia': [
+                ['Avocado uramaki', 15, 200], ['Ebi tempura roll', 14, 210], ['Banoffee truffle', 17, 210], ['Golden fried broccoli', 12, 190], ['Tawa meen', 27, 270]],
+            'Empire restaurant': [
+                ['Chicken tandoori', 18, 140], ['Parota', 7, 20], ['Butter chicken', 17, 120], ['Butter scotch milkshake', 10, 120], ['Shaadi-ki-biriyani', 25, 570]],
+            'Shanti sagar': [
+                ['Veg palao', 12, 80], ['Veg biriyani', 12, 80], ['Schezwan fried rice', 14, 100], ['Palak paneer', 13, 90], ['Veg noodles', 12, 80]],
+            'Burma burma': [
+                ['Burmese pepper soup', 19, 290], ['Chicken ramen', 20, 370], ['Pumpkin and basil soup', 20, 290], ['Eggplant tofu mash', 19, 210], ['Sticky rice', 12, 190]]
+        })
         self.ordersTaken = dict()
         f = open(input)
         lines = f.readlines()
@@ -195,6 +208,7 @@ class Swiggy:
         f = open(f'Order{orderNumber[0]}.txt', "w+")
         f.write(f'Order {orderNumber[0]} dispatched. Please pay {totalCost}')
         f.close()
+        playsound("F:\Github\python-project-sujay-sp-au9\juntos.mp3")
         del self.ordersTaken[orderNumber[0]]
 
 
