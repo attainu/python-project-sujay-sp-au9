@@ -4,10 +4,11 @@ from collections import defaultdict
 import threading
 from playsound import playsound
 import gtts
+import os
 
 
 class Swiggy:
-    def __init__(self, input):
+    def __init__(self, input, filePath):
         self.PROCESSING_POWER = 3
         self.restaurants = [['Davangere benne dosa', 5000, 3, True], ['ITC gardenia', 5000, 3, True], [
             'Empire restaurant', 5000, 3, True], ['Shanti sagar', 5000, 3, True], ['Burma burma', 5000, 3, True]]
@@ -30,6 +31,7 @@ class Swiggy:
         self.inputIndex = 0
         self.fileInput = True
         f.close()
+        self.filePath = filePath
 
     def inputFile(self, text=""):
         if not self.fileInput:
@@ -208,20 +210,26 @@ class Swiggy:
             self.restaurants[orderNumber[1]][3] = True
             self.restaurants[orderNumber[1]][2] += 1
         f = open(
-            f'..\\Order_log\\Order{orderNumber[0]}.txt', "w+")
+            f'{self.filePath}Order{orderNumber[0]}.txt', "w+")
         f.write(f'Order {orderNumber[0]} dispatched. Please pay {totalCost}')
         f.close()
         tts = gtts.gTTS(f'Order {orderNumber[0]}')
         tts.save(
-            f'..\\Order_log\\{orderNumber[0]}.mp3')
+            f'{self.filePath}{orderNumber[0]}.mp3')
         playsound(
-            f"..\\Order_log\\{orderNumber[0]}.mp3")
+            f"{self.filePath}{orderNumber[0]}.mp3")
         del self.ordersTaken[orderNumber[0]]
 
 
 if __name__ == "__main__":
+    if os.name == 'nt':
+        filePath = '..\\Order_log\\'
+    elif os.name == 'posix':
+        filePath = '/Order_log/'
+    else:
+        sys.exit("Please run file on windows/linux")
     orderNumber = 1
-    system = Swiggy("input.txt")
+    system = Swiggy("input.txt", filePath)
     print("File input? y or n")
     fileInput = input()
     if fileInput in 'Nn':
